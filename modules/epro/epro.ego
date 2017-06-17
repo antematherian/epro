@@ -2,6 +2,7 @@
 
 import os, sys
 import portage
+import portage.repository.config
 import json
 
 #Refactoring code:
@@ -9,21 +10,24 @@ import json
 ## We are currently relying on portage.settings["PORTDIR"] to find the root location of the profile
 ## information.
 
+portdir = portage.repository.config.load_repository_config(portage.settings).mainRepoLocation()
+print(portdir)
 #portdir = portage.settings["PORTDIR"]
-#repodir = portdir + "/profiles"
-#egodescfile = repodir + "/profiles.ego.desc"
-
+repodir = portdir + "/profiles"
+egodescfile = repodir + "/profiles.ego.desc"
+print(repodir)
+print(egodescfile)
 # We use /etc/portage/make.profile as our starting point for resolving profile settings.
 
-#profiledir = "/etc/portage/make.profile"
+profiledir = "/etc/portage/make.profile"
 
 # The reponame file is used for resolving profiles, particularly those set in /etc/portage/make.profile,
 # which reference a repository name, as in:
 
 # gentoo:funtoo/1.0/linux-gnu/arch/x86-64bit.
 
-#reponamefile = os.path.join(repodir,"repo_name")
-
+reponamefile = os.path.join(repodir,"repo_name")
+print(reponamefile)
 #refactoring end
 
 # Somewhat self-explanatory, these list profiles that can be specified (up to once), ones that can
