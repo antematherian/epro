@@ -43,12 +43,12 @@ valid_actions = valid_profiles + [ "show", "show-json", "get", "list" ]
 
 #Refactoring start:
 
-#if os.path.exists(reponamefile):
-#	with open(reponamefile,"r") as rnf:
-#		reponame = rnf.read().strip()
-#else:
-#	print("Unable to find the repository name in %s - exiting." % reponamefile)
-#	sys.exit(1)
+if os.path.exists(reponamefile):
+	with open(reponamefile,"r") as rnf:
+		reponame = rnf.read().strip()
+else:
+	print("Unable to find the repository name in %s - exiting." % reponamefile)
+	sys.exit(1)
 
 #refactoring end
 
